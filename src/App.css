@@ -1,8 +1,32 @@
-.APP {
-  max-width: 1200px;
-  max-height: 800px;
+.Mainpage {
+  width: 400px;
+  height: 300px;
   display: flex;
-  border: 1px solid;
-  border-radius: 1px;
-  justify-items: center;
+  flex-direction: column;
+  margin: auto;
+  border: 1px solid black;
+  margin-top: 3%;
+  align-items: center;
+}
+
+.Header {
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 5%;
+}
+
+.TodoListItems {
+  display: flex;
+}
+
+.inputinfo {
+  padding-right: 30px;
+}
+
+.Ip_Button {
+  margin: auto;
 }

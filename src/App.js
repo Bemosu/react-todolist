@@ -2,22 +2,13 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const [todos,setTodos] = useState([
-  {
-    id : 1,
-    title : '코딩',
-    todo : '투두리스트하기',
-  },
-  {
-    id : 2,
-    title : '점심',
-    todo : '점심밥먹기'
-  }
-  ])
-
+  // state 상태창 관리
+  const [todos,setTodos] = useState([])
   const [title,setTitle] = useState('');
   const [todo,setTodo] = useState('');
-
+  const [isDone,setIsdone] = useState(false)
+  
+  // 변화 감지 이벤트핸들러 
   const titleChangehandler = (event) => {
     setTitle(event.target.value)
   }
@@ -26,41 +17,51 @@ function App() {
     setTodo(event.target.value)
   }
 
+  // 할일 추가 버튼
   const Addbuttonhandler = () => {
-    
     const newTodos = {
       id : todos.length+1,
       title : title, 
       todo : todo,
+      isDone : true
     }
       setTodos([...todos, newTodos ])
   }
-
+  
+  // 취소버튼
   const deletebutton = (id) => {
     alert(id)
     const newTodos = todos.filter((item)=> item.id !== id)
     setTodos(newTodos)
   }
+
+  // isDone 체크
+  
   return (
-    <div className="App">
+    <div className="Mainpage">
+      <span>MY TodoList</span>
       <div className='Header'>
         제목 :<input 
-                value={title}
-                onChange={titleChangehandler}
-                ></input>
+            value={title}
+            onChange={titleChangehandler}
+          ></input> 
         할일 :<input 
-                value={todo}
-                onChange={todoChangehandler}></input>
-        <button onClick={Addbuttonhandler}>추가</button>
-
-        <div className='TodoListItems'>
-          {todos.map((item) => {
-          return  <div key={item.id} className='TodosItem'>
-            {item.title}  {item.todo}
-            <button onClick={() => deletebutton(item.id)}>x</button></div>
+            value={todo}
+            onChange={todoChangehandler}></input>
+            
+          <button className='Ip_Button' onClick={Addbuttonhandler}>추가</button>
+          
+      </div>
+      <div className='TodoListItems'>
+      <div className='TodoWorkingList'>
+        {todos.map((item) => {
+        return  <div key={item.id} className='TodosItem'>
+          {item.title}  {item.todo}
+          <button onClick={() => deletebutton(item.id)}>x</button>
+                </div>
           })}
-        
-        </div>
+      </div>
+      <div className='TododoneList'></div>
       </div>
     </div>
   );
