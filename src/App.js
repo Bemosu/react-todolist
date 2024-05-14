@@ -41,27 +41,34 @@ function App() {
     <div className="Mainpage">
       <span>MY TodoList</span>
       <div className='Header'>
-        제목 :<input 
+        <div className='titlesection'> 
+        제목 : <input 
             value={title}
             onChange={titleChangehandler}
           ></input> 
-        할일 :<input 
+        </div>
+        <div className='todosection'> 
+        할일 : <input 
             value={todo}
             onChange={todoChangehandler}></input>
-            
+          <div className='addbuttonsection'>
           <button className='Ip_Button' onClick={Addbuttonhandler}>추가</button>
-          
+          </div>
+        </div>   
       </div>
       <div className='TodoListItems'>
-      <div className='TodoWorkingList'>
-        {todos.map((item) => {
-        return  <div key={item.id} className='TodosItem'>
-          {item.title}  {item.todo}
-          <button onClick={() => deletebutton(item.id)}>x</button>
-                </div>
-          })}
-      </div>
-      <div className='TododoneList'></div>
+        <div className='TodoWorkingList'>
+          Working!
+          {todos.map((item) => {
+          return  <div key={item.id} className='TodosItem'>
+            {item.title}  {item.todo}
+            <button onClick={() => deletebutton(item.id)}>x</button>
+                  </div>
+            })}
+        </div>
+        <div className='TododoneList'>
+          IsDone!
+        </div>
       </div>
     </div>
   );
