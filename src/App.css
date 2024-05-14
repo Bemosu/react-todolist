@@ -1,12 +1,8 @@
-.APP{
+.APP {
   max-width: 1200px;
   max-height: 800px;
   display: flex;
-  border:1px solid;
-  border-radius: 1px ;
+  border: 1px solid;
+  border-radius: 1px;
   justify-items: center;
-}
-
-.Header{
-  
 }

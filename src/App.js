@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -17,7 +16,7 @@ function App() {
   ])
 
   const [title,setTitle] = useState('');
-  const [todo, setTodo] = useState('');
+  const [todo,setTodo] = useState('');
 
   const titleChangehandler = (event) => {
     setTitle(event.target.value)
@@ -31,10 +30,16 @@ function App() {
     
     const newTodos = {
       id : todos.length+1,
-      titie : title,
-      todo : todo ,
+      title : title, 
+      todo : todo,
     }
       setTodos([...todos, newTodos ])
+  }
+
+  const deletebutton = (id) => {
+    alert(id)
+    const newTodos = todos.filter((item)=> item.id !== id)
+    setTodos(newTodos)
   }
   return (
     <div className="App">
@@ -51,7 +56,8 @@ function App() {
         <div className='TodoListItems'>
           {todos.map((item) => {
           return  <div key={item.id} className='TodosItem'>
-            {item.title} {item.todo}</div>
+            {item.title}  {item.todo}
+            <button onClick={() => deletebutton(item.id)}>x</button></div>
           })}
         
         </div>
