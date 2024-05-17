@@ -65,12 +65,19 @@
   flex-wrap: wrap;
   gap: 5%;
 }
+
 .TodoWorkingList{
   height:50%;
 }
 
-.TododoneList{
-  height:50%;
+
+
+.TododoneListsection{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5%;
 }
 
 .TodosItem{

@@ -1,14 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-const ListContainer = ({todos, TodoForm, StBtn, deletebutton, isDoneChangeHandler, ButtonArea}) => {
+const ListContainer = ({TodoForm, StBtn, deletebutton, isDoneChangeHandler}) => {
+  const todoItems = useSelector((state)=>
+    state.todosItem.todos
+  )
+  // const workingList = todoItems.filter(item => !item.isDone)
+
   return (
     <div className='TodoListContainer'>
         <div className='TodoWorkingList'>
-        <div>
+          <div>
           Working!
           </div>
           <div className='WorkingListsection'>
-          {todos.filter((item)=> !item.isDone).map((item) => {
+            {/* {workingList} */}
+          {todoItems.filter((item)=> !item.isDone).map((item) => {
           return  <div key={item.id} className='TodosItem'>
           <TodoForm item={item} StBtn={StBtn} deletebutton={deletebutton} isDoneChangeHandler={isDoneChangeHandler}/>
             </div>
@@ -16,22 +23,18 @@ const ListContainer = ({todos, TodoForm, StBtn, deletebutton, isDoneChangeHandle
         </div>
         </div>
         <div className='TododoneList'>
+          <div>
           Done!
-          {todos.filter((item)=> item.isDone).map((item) => {
+          </div>
+          <div className='TododoneListsection'>
+          {todoItems.filter((item)=> item.isDone).map((item) => {
           return  <div key={item.id} className='TodosItem'>
-          <div className='todoItemSection'>
-            <div className='todoTitle'>
-            {item.title}  
-            </div>
-            <div className='todocontent'>
-            {item.todo}
-            </div>
-            <ButtonArea StBtn={StBtn} deletebutton={deletebutton} isDoneChangeHandler={isDoneChangeHandler} item={item}/>
-                  </div>
+          <TodoForm item={item} StBtn={StBtn} deletebutton={deletebutton} isDoneChangeHandler={isDoneChangeHandler}/>
             </div>
             })}
+          </div>
         </div>
-      </div>
+    </div>
   )
 }
 

@@ -6,17 +6,17 @@ import ButtonArea from './components/ButtonArea';
 import TodoForm from './page/TodoForm';
 import ListContainer from './page/ListContainer';
 import TodoList from './page/TodoList';
-import Index from './page/Index';
+import Index from './page/LayOut';
+import Router from './shared/router';
+import { Provider } from 'react-redux';
+import store from './redux/config/configStore';
 
 function App() {
- 
+  
   return (
-    <Index
-      TodoList={TodoList}
-      InputArea={InputArea} 
-      ListContainer={ListContainer} 
-      TodoForm={TodoForm} 
-      ButtonArea={ButtonArea}/>
+    <Provider store={store}>
+  <Router></Router>
+  </Provider>
   );
 }
 
